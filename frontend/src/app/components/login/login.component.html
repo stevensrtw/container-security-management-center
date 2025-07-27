@@ -1,0 +1,19 @@
+<mat-card class="login-card">
+  <h2>Login</h2>
+  <form (submit)="login()" class="login-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)]="username" name="username" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Role</mat-label>
+      <mat-select [(ngModel)]="role" name="role" required>
+        <mat-option value="user">User</mat-option>
+        <mat-option value="cyber">Cyber</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Login</button>
+  </form>
+</mat-card>

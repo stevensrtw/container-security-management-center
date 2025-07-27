@@ -1,0 +1,28 @@
+<mat-card class="upload-card">
+  <h3>Upload SBOM File</h3>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <input
+      matInput
+      type="file"
+      (change)="onFileSelected($event)"
+      required
+    />
+    <mat-error *ngIf="!selectedFile">Please select a file.</mat-error>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="upload()"
+    [disabled]="!selectedFile || loading"
+  >
+    Upload
+  </button>
+</mat-card>
+
+<mat-progress-spinner
+  *ngIf="loading"
+  mode="indeterminate"
+  diameter="40"
+></mat-progress-spinner>

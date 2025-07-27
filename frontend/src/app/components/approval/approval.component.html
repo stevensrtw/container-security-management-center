@@ -1,0 +1,48 @@
+<mat-card class="approval-card">
+  <h3>Submit Approval</h3>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>SBOM ID</mat-label>
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="sbomId"
+      required
+      #sbomIdField="ngModel"
+    />
+    <mat-error *ngIf="sbomIdField.invalid && sbomIdField.touched">
+      SBOM ID is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-slide-toggle [(ngModel)]="approved">Approved</mat-slide-toggle>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Notes</mat-label>
+    <textarea
+      matInput
+      rows="3"
+      [(ngModel)]="notes"
+      required
+      #notesField="ngModel"
+    ></textarea>
+    <mat-error *ngIf="notesField.invalid && notesField.touched">
+      Notes are required
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="submit()"
+    [disabled]="loading || sbomIdField.invalid || notesField.invalid"
+  >
+    Submit
+  </button>
+
+  <mat-progress-spinner
+    *ngIf="loading"
+    mode="indeterminate"
+    diameter="40"
+  ></mat-progress-spinner>
+</mat-card>

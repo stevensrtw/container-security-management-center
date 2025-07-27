@@ -1,0 +1,30 @@
+fastapi==0.110.0
+uvicorn[standard]==0.29.0
+
+# DB
+sqlalchemy==2.0.30
+asyncpg==0.29.0
+psycopg2-binary==2.9.9  # Used only if you're not fully async
+
+# Alembic for migrations (optional)
+alembic==1.13.1
+
+# JWT / Auth
+python-jose==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Pydantic
+pydantic==2.7.1
+pydantic-settings==2.2.1
+
+# Celery for background jobs
+celery==5.3.6
+redis==5.0.4
+
+# Trivy scan support
+tenacity==8.3.0  # for retries
+python-dotenv==1.0.1  # for env config (if needed)
+
+# Type hints and dev tools (optional but recommended)
+mypy==1.10.0
+httpx==0.27.0  # for async http calls if needed

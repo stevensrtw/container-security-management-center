@@ -1,0 +1,38 @@
+<mat-card class="upload-card" #formContainer>
+  <h3>Trigger Trivy Scan</h3>
+
+  <div *ngIf="formInvalid && submitted" class="error-summary">
+    <mat-icon color="warn">error</mat-icon>
+    Please correct the errors below.
+  </div>
+
+  <mat-form-field appearance="outline" class="full-width" #imageField>
+    <mat-label>Container Image</mat-label>
+    <input
+      matInput
+      [(ngModel)]="imageName"
+      required
+      name="imageName"
+      #imageModel="ngModel"
+      [class.invalid]="imageModel.invalid && submitted"
+    />
+    <mat-error *ngIf="imageModel.invalid && submitted">
+      <mat-icon>error</mat-icon> Image name is required
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="submit(formContainer)"
+    [disabled]="loading"
+  >
+    Run Scan
+  </button>
+
+  <mat-progress-spinner
+    *ngIf="loading"
+    mode="indeterminate"
+    diameter="40"
+  ></mat-progress-spinner>
+</mat-card>

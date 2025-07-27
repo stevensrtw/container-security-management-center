@@ -1,0 +1,15 @@
+<mat-card class="results-card">
+  <h3>Scan Results</h3>
+
+  <mat-accordion *ngFor="let result of scanResults">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ result.name }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <pre>{{ result.content | json }}</pre>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>
